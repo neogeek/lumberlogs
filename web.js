@@ -22,4 +22,12 @@ server.post('/log', (req, res) => {
     res.send(204);
 });
 
+server.get(
+    '/*',
+    restify.plugins.serveStatic({
+        directory: './static',
+        default: 'index.html'
+    })
+);
+
 server.listen(process.env.PORT || 8080);
