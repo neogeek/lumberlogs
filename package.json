@@ -1,0 +1,9 @@
+{
+  "dependencies": {
+    "restify": "7.2.1",
+    "with-env": "github:neogeek/with-env"
+  },
+  "scripts": {
+    "start": "node web.js"
+  }
+}
