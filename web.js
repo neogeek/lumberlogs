@@ -9,7 +9,8 @@ const server = restify.createServer({
 server.use(restify.plugins.bodyParser());
 
 server.post('/log', (req, res) => {
-    process.stdout.write(`${new Date().toLocaleString()} ${req.body}\n`);
+    const logString = `${new Date().toLocaleString()} ${req.body}\n`;
+    process.stdout.write(logString);
     res.send(204);
 });
 
