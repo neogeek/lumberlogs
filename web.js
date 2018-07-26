@@ -16,7 +16,13 @@ const server = restify.createServer({
 server.use(restify.plugins.bodyParser());
 
 server.post('/log', (req, res) => {
-    const logString = `${new Date().toLocaleString()} ${req.body}\n`;
+    let body = req.body;
+
+    if (req.getContentType() === 'application/x-www-form-urlencoded') {
+        body = JSON.stringify(body);
+    }
+
+    const logString = `${new Date().toLocaleString()}\t${body}\n`;
     process.stdout.write(logString);
     wstream.write(logString);
     res.send(204);
