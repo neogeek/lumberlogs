@@ -67,13 +67,22 @@ code {
 
 .button {
     appearance: none;
-    padding: 0.5rem 0.75rem;
+    padding: calc(0.5rem + 2px) 0.75rem;
     font-size: inherit;
     line-height: 1;
     border: 0;
     border-radius: 0.25rem;
     background-color: #ddd;
     cursor: pointer;
+}
+
+.filter {
+    margin-right: 0.5rem;
+    padding: 0.5rem 0.75rem;
+    font-size: inherit;
+    line-height: 1;
+    border: 1px solid #ddd;
+    border-radius: 0.25rem;
 }
 
 .logs {

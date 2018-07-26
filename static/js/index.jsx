@@ -18,6 +18,7 @@ class Logs extends Component {
         }
 
         this.state = {
+            filter: new RegExp('', 'i'),
             logs
         };
 
@@ -29,6 +30,11 @@ class Logs extends Component {
                 },
                 this.storeCache.bind(this)
             );
+        });
+    }
+    filterLogs(e) {
+        this.setState({
+            filter: new RegExp(e.target.value, 'i')
         });
     }
     storeCache() {
@@ -48,6 +54,13 @@ class Logs extends Component {
             <div className="page-wrapper">
                 <header className="page-header">
                     <h1>LumberLog Dashboard</h1>
+                    <input
+                        type="text"
+                        className="filter"
+                        size={40}
+                        onChange={this.filterLogs.bind(this)}
+                        placeholder="Filter logs"
+                    />
                     <button
                         className="button"
                         onClick={this.clearCache.bind(this)}
@@ -56,9 +69,11 @@ class Logs extends Component {
                     </button>
                 </header>
                 <div className="logs">
-                    {this.state.logs.map((log, index) => (
-                        <LogEntry key={index} text={log} />
-                    ))}
+                    {this.state.logs
+                        .filter(log => this.state.filter.test(log))
+                        .map((log, index) => (
+                            <LogEntry key={index} text={log} />
+                        ))}
                     <div className="log-entry-footer" />
                 </div>
             </div>
