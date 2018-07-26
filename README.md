@@ -13,7 +13,7 @@ $ npm install
 Create **.env** with the following content.
 
 ```
-PORT=8080
+PORT=8000
 ```
 
 Run the server.
@@ -27,7 +27,7 @@ $ npm start
 ### Bash
 
 ```bash
-$ curl -H "content-type:text/plain" -d 'HelloWorld' http://localhost:8080/log
+$ curl -H "content-type:text/plain" -d 'HelloWorld' http://localhost:8000/log
 ```
 
 ### Unity
@@ -55,7 +55,7 @@ public class Logger : MonoBehaviour
         loggingForm.AddField("Stack_Trace", stackTrace);
         loggingForm.AddField("Device_Model", SystemInfo.deviceModel);
 
-        var sendLog = new WWW("http://localhost:8080/log", loggingForm);
+        var sendLog = new WWW("http://localhost:8000/log", loggingForm);
 
     }
 
