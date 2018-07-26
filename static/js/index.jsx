@@ -28,6 +28,9 @@ class Logs extends Component {
                     logs: [...this.state.logs, event.data]
                 },
                 () => {
+                    document
+                        .querySelector('.log-entry-footer')
+                        .scrollIntoView({ behavior: 'smooth' });
                     localStorage.setItem(
                         'logs',
                         JSON.stringify(this.state.logs.slice(-100))
@@ -38,10 +41,16 @@ class Logs extends Component {
     }
     render() {
         return (
-            <div className="logs">
-                {this.state.logs.map((log, index) => (
-                    <LogEntry key={index} text={log} />
-                ))}
+            <div className="page-wrapper">
+                <header className="page-header">
+                    <h1>LumberLog Dashboard</h1>
+                </header>
+                <div className="logs">
+                    {this.state.logs.map((log, index) => (
+                        <LogEntry key={index} text={log} />
+                    ))}
+                    <div className="log-entry-footer" />
+                </div>
             </div>
         );
     }
