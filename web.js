@@ -10,7 +10,7 @@ const wstream = createWriteStream('logs/log.log');
 const restify = require('restify');
 
 const server = restify.createServer({
-    acceptable: 'text/plain'
+    acceptable: ['text/plain', 'application/x-www-form-urlencoded']
 });
 
 server.use(restify.plugins.bodyParser());
