@@ -3,7 +3,7 @@ import ReactDOM from 'react-dom';
 
 class LogEntry extends PureComponent {
     render() {
-        return <div>{this.props.text}</div>;
+        return <div className="log-entry">{this.props.text}</div>;
     }
 }
 
@@ -24,7 +24,7 @@ class Logs extends Component {
     }
     render() {
         return (
-            <div>
+            <div className="logs">
                 {this.state.logs.map((log, index) => (
                     <LogEntry key={index} text={log} />
                 ))}
