@@ -10,16 +10,16 @@ Install required packages via node.
 $ npm install
 ```
 
-Create **.env** with the following content.
-
-```
-PORT=8000
-```
-
 Run the server.
 
 ```bash
 $ npm start
+```
+
+Running the server with a custom port.
+
+```bash
+$ PORT=5000 npm start
 ```
 
 ## Usage

@@ -1,5 +1,3 @@
-require('with-env')();
-
 const { createWriteStream } = require('fs');
 const { spawnSync } = require('child_process');
 
