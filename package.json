@@ -1,4 +1,10 @@
 {
+  "name": "lumber-logs",
+  "version": "1.0.0",
+  "description": "A self-hosted log aggregation tool.",
+  "engines": {
+    "node": ">=10.0"
+  },
   "dependencies": {
     "restify": "7.2.1",
     "ws": "6.0.0"
@@ -14,5 +20,6 @@
   "scripts": {
     "start": "node web.js",
     "build": "NODE_ENV=production spire-of-babel ./static/js/index.jsx --bundle | uglifyjs --compress --mangle > ./static/js/bundle.min.js"
-  }
+  },
+  "private": true
 }
