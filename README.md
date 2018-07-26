@@ -1,4 +1,4 @@
-# LumberLog
+# LumberLogs
 
 > A self-hosted log aggregation tool.
 

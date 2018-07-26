@@ -53,7 +53,7 @@ class Logs extends Component {
         return (
             <div className="page-wrapper">
                 <header className="page-header">
-                    <h1>LumberLog Dashboard</h1>
+                    <h1>LumberLogs Dashboard</h1>
                     <input
                         type="text"
                         className="filter"
