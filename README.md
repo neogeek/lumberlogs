@@ -50,7 +50,7 @@ public class Logger : MonoBehaviour
 
         var loggingForm = new WWWForm();
 
-        loggingForm.AddField("LEVEL", type.ToString());
+        loggingForm.AddField("Type", type.ToString());
         loggingForm.AddField("Message", logString);
         loggingForm.AddField("Stack_Trace", stackTrace);
         loggingForm.AddField("Device_Model", SystemInfo.deviceModel);
