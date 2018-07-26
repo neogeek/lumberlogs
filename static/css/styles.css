@@ -65,6 +65,17 @@ code {
     flex: 0;
 }
 
+.button {
+    appearance: none;
+    padding: 0.5rem 0.75rem;
+    font-size: inherit;
+    line-height: 1;
+    border: 0;
+    border-radius: 0.25rem;
+    background-color: #ddd;
+    cursor: pointer;
+}
+
 .logs {
     padding: 1rem;
     flex: 1;

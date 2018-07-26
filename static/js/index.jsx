@@ -27,23 +27,33 @@ class Logs extends Component {
                 {
                     logs: [...this.state.logs, event.data]
                 },
-                () => {
-                    document
-                        .querySelector('.log-entry-footer')
-                        .scrollIntoView({ behavior: 'smooth' });
-                    localStorage.setItem(
-                        'logs',
-                        JSON.stringify(this.state.logs.slice(-100))
-                    );
-                }
+                this.storeCache.bind(this)
             );
         });
+    }
+    storeCache() {
+        document
+            .querySelector('.log-entry-footer')
+            .scrollIntoView({ behavior: 'smooth' });
+        localStorage.setItem(
+            'logs',
+            JSON.stringify(this.state.logs.slice(-100))
+        );
+    }
+    clearCache() {
+        this.setState({ logs: [] }, this.storeCache.bind(this));
     }
     render() {
         return (
             <div className="page-wrapper">
                 <header className="page-header">
                     <h1>LumberLog Dashboard</h1>
+                    <button
+                        className="button"
+                        onClick={this.clearCache.bind(this)}
+                    >
+                        Clear Logs
+                    </button>
                 </header>
                 <div className="logs">
                     {this.state.logs.map((log, index) => (
