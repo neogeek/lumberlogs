@@ -42,10 +42,17 @@ using UnityEngine;
 public class Logger : MonoBehaviour
 {
 
-    private void Awake()
+    private void OnEnable()
     {
 
         Application.logMessageReceived += HandleLog;
+
+    }
+
+    private void OnDisable()
+    {
+
+        Application.logMessageReceived -= HandleLog;
 
     }
 
