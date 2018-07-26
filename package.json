@@ -1,7 +1,8 @@
 {
   "dependencies": {
     "restify": "7.2.1",
-    "with-env": "github:neogeek/with-env"
+    "with-env": "github:neogeek/with-env",
+    "ws": "6.0.0"
   },
   "scripts": {
     "start": "node web.js"

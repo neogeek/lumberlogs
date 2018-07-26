@@ -13,6 +13,10 @@ const server = restify.createServer({
     acceptable: ['text/plain', 'application/x-www-form-urlencoded']
 });
 
+const WebSocketServer = require('ws').Server;
+
+const wss = new WebSocketServer({ server: server.server });
+
 server.use(restify.plugins.bodyParser());
 
 server.post('/log', (req, res) => {
@@ -25,6 +29,7 @@ server.post('/log', (req, res) => {
     const logString = `${new Date().toLocaleString()}\t${body}\n`;
     process.stdout.write(logString);
     wstream.write(logString);
+    wss.clients.forEach(client => client.send(logString));
     res.send(204);
 });
 
