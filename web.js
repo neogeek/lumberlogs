@@ -1,9 +1,9 @@
 require('with-env')();
 
 const { createWriteStream } = require('fs');
-const { spawn } = require('child_process');
+const { spawnSync } = require('child_process');
 
-spawn('mkdir', '-p logs'.split(' '));
+spawnSync('mkdir', '-p logs'.split(' '));
 
 const wstream = createWriteStream('logs/log.log');
 
