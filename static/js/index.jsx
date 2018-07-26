@@ -11,15 +11,29 @@ class Logs extends Component {
     constructor(props) {
         super(props);
 
+        let logs = [];
+
+        if (localStorage.getItem('logs')) {
+            logs = JSON.parse(localStorage.getItem('logs'));
+        }
+
         this.state = {
-            logs: []
+            logs
         };
 
         this.socket = new WebSocket('ws://localhost:8000');
         this.socket.addEventListener('message', event => {
-            this.setState({
-                logs: [...this.state.logs, event.data]
-            });
+            this.setState(
+                {
+                    logs: [...this.state.logs, event.data]
+                },
+                () => {
+                    localStorage.setItem(
+                        'logs',
+                        JSON.stringify(this.state.logs.slice(-100))
+                    );
+                }
+            );
         });
     }
     render() {
