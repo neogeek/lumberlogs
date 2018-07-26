@@ -1,6 +1,8 @@
 import React, { Component, PureComponent } from 'react';
 import ReactDOM from 'react-dom';
 
+const MAX_LOGS_IN_CACHE = 1000;
+
 class LogEntry extends PureComponent {
     render() {
         return <div className="log-entry">{this.props.text}</div>;
@@ -43,7 +45,7 @@ class Logs extends Component {
             .scrollIntoView({ behavior: 'smooth' });
         localStorage.setItem(
             'logs',
-            JSON.stringify(this.state.logs.slice(-100))
+            JSON.stringify(this.state.logs.slice(-MAX_LOGS_IN_CACHE))
         );
     }
     clearCache() {
