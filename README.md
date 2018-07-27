@@ -45,14 +45,24 @@ public class Logger : MonoBehaviour
     private void OnEnable()
     {
 
-        Application.logMessageReceived += HandleLog;
+        if (Debug.isDebugBuild)
+        {
+
+            Application.logMessageReceived += HandleLog;
+
+        }
 
     }
 
     private void OnDisable()
     {
 
-        Application.logMessageReceived -= HandleLog;
+        if (Debug.isDebugBuild)
+        {
+
+            Application.logMessageReceived -= HandleLog;
+
+        }
 
     }
 
