@@ -40,7 +40,7 @@ server.get('/ip', (req, res) => res.send(`http://${ip.address()}:${PORT}/log`));
 server.get(
     '/*',
     restify.plugins.serveStatic({
-        directory: './static',
+        directory: `${__dirname}/static`,
         default: 'index.html'
     })
 );
