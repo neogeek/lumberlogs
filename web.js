@@ -1,6 +1,8 @@
 const { createWriteStream } = require('fs');
 const { spawnSync } = require('child_process');
 
+const PORT = process.env.PORT || 8000;
+
 spawnSync('mkdir', '-p logs'.split(' '));
 
 const wstream = createWriteStream('logs/log.log');
@@ -31,6 +33,10 @@ server.post('/log', (req, res) => {
     res.send(204);
 });
 
+const ip = require('ip');
+
+server.get('/ip', (req, res) => res.send(`http://${ip.address()}:${PORT}/log`));
+
 server.get(
     '/*',
     restify.plugins.serveStatic({
@@ -39,4 +45,4 @@ server.get(
     })
 );
 
-server.listen(process.env.PORT || 8000);
+server.listen(PORT);

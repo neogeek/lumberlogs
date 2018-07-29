@@ -21,10 +21,11 @@ class Logs extends Component {
 
         this.state = {
             filter: new RegExp('', 'i'),
-            logs
+            logs,
+            url: ''
         };
 
-        this.socket = new WebSocket('ws://localhost:8000');
+        this.socket = new WebSocket(`ws://${document.location.host}`);
         this.socket.addEventListener('message', event => {
             this.setState(
                 {
@@ -33,6 +34,9 @@ class Logs extends Component {
                 this.storeCache.bind(this)
             );
         });
+        fetch('/ip')
+            .then(response => response.json())
+            .then(url => this.setState({ url }));
     }
     filterLogs(e) {
         this.setState({
@@ -56,6 +60,7 @@ class Logs extends Component {
             <div className="page-wrapper">
                 <header className="page-header">
                     <h1>LumberLogs Dashboard</h1>
+                    <p>{this.state.url}</p>
                     <input
                         type="text"
                         className="filter"
