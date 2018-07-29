@@ -2,6 +2,7 @@
   "name": "lumber-logs",
   "version": "1.0.0",
   "description": "A self-hosted log aggregation tool.",
+  "main": "app.js",
   "engines": {
     "node": ">=10.0"
   },
@@ -12,14 +13,23 @@
   "devDependencies": {
     "babel-plugin-transform-object-rest-spread": "6.26.0",
     "babel-preset-env": "1.7.0",
+    "electron": "2.0.5",
+    "electron-builder": "20.26.0",
     "react": "16.4.1",
     "react-dom": "16.4.1",
     "spire-of-babel": "1.4.0",
     "uglify-js": "3.4.5"
   },
   "scripts": {
-    "start": "node web.js",
-    "build": "NODE_ENV=production spire-of-babel ./static/js/index.jsx --bundle | uglifyjs --compress --mangle > ./static/js/bundle.min.js"
+    "start": "electron .",
+    "dist": "electron-builder",
+    "build": "spire-of-babel ./static/js/index.jsx --bundle > ./static/js/bundle.min.js"
+  },
+  "build": {
+    "appId": "com.scottdoxey.lumberlogs",
+    "mac": {
+      "target": "dmg"
+    }
   },
   "private": true
 }
