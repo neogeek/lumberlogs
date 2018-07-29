@@ -1,11 +1,6 @@
-const { createWriteStream } = require('fs');
 const { spawnSync } = require('child_process');
 
 const PORT = process.env.PORT || 8000;
-
-spawnSync('mkdir', '-p logs'.split(' '));
-
-const wstream = createWriteStream('logs/log.log');
 
 const restify = require('restify');
 
@@ -28,7 +23,6 @@ server.post('/log', (req, res) => {
 
     const logString = `${new Date().toLocaleString()}\t${body}\n`;
     process.stdout.write(logString);
-    wstream.write(logString);
     wss.clients.forEach(client => client.send(logString));
     res.send(204);
 });
