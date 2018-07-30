@@ -34,5 +34,17 @@
       "target": "dmg"
     }
   },
+  "authors": [
+    {
+      "name": "Scott Doxey",
+      "email": "hello@scottdoxey.com",
+      "homepage": "http://scottdoxey.com/"
+    }
+  ],
+  "homepage": "https://github.com/neogeek/lumber-logs",
+  "repository": {
+    "type": "git",
+    "url": "git://github.com/neogeek/lumber-logs.git"
+  },
   "private": true
 }
