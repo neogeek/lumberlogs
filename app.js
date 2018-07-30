@@ -2,6 +2,8 @@ require('./web.js');
 
 const { app, BrowserWindow } = require('electron');
 
+require('electron-context-menu')();
+
 const Store = require('electron-store');
 const store = new Store();
 
