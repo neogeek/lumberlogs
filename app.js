@@ -13,7 +13,8 @@ let win;
 const createWindow = () => {
     win = new BrowserWindow({
         width: store.get('window_width', 800),
-        height: store.get('window_height', 600)
+        height: store.get('window_height', 600),
+        title: 'LumberLogs'
     });
 
     const menu = defaultMenu(app, shell);
