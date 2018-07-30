@@ -2,13 +2,25 @@ require('./web.js');
 
 const { app, BrowserWindow } = require('electron');
 
+const Store = require('electron-store');
+const store = new Store();
+
 let win;
 
 const createWindow = () => {
-    win = new BrowserWindow({ width: 800, height: 600 });
+    win = new BrowserWindow({
+        width: store.get('window_width', 800),
+        height: store.get('window_height', 600)
+    });
 
     win.loadURL('http://localhost:8000/');
     win.focus();
+
+    win.on('resize', () => {
+        const [width, height] = win.getSize();
+        store.set('window_width', width);
+        store.set('window_height', height);
+    });
 
     win.on('closed', () => {
         win = null;

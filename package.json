@@ -7,6 +7,7 @@
     "node": ">=10.0"
   },
   "dependencies": {
+    "electron-store": "2.0.0",
     "graceful-fs": "4.1.11",
     "ip": "1.1.5",
     "restify": "7.2.1",
