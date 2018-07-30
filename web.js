@@ -1,4 +1,8 @@
-const { spawnSync } = require('child_process');
+const { app } = require('electron');
+
+const { createWriteStream } = require('graceful-fs');
+
+const wstream = createWriteStream(`${app.getPath('desktop')}/logs.txt`);
 
 const PORT = process.env.PORT || 8000;
 
@@ -23,6 +27,7 @@ server.post('/log', (req, res) => {
 
     const logString = `${new Date().toLocaleString()}\t${body}\n`;
     process.stdout.write(logString);
+    wstream.write(logString);
     wss.clients.forEach(client => client.send(logString));
     res.send(204);
 });

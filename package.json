@@ -7,6 +7,7 @@
     "node": ">=10.0"
   },
   "dependencies": {
+    "graceful-fs": "4.1.11",
     "ip": "1.1.5",
     "restify": "7.2.1",
     "ws": "6.0.0"
