@@ -1,6 +1,7 @@
 require('./web.js');
 
-const { app, BrowserWindow } = require('electron');
+const { app, BrowserWindow, Menu, shell } = require('electron');
+const defaultMenu = require('electron-default-menu');
 
 require('electron-context-menu')();
 
@@ -15,6 +16,8 @@ const createWindow = () => {
         height: store.get('window_height', 600)
     });
 
+    const menu = defaultMenu(app, shell);
+
     win.loadURL('http://localhost:8000/');
     win.focus();
 
@@ -27,6 +30,8 @@ const createWindow = () => {
     win.on('closed', () => {
         win = null;
     });
+
+    Menu.setApplicationMenu(Menu.buildFromTemplate(menu));
 };
 
 app.on('ready', createWindow);
