@@ -60,7 +60,7 @@ class Logs extends Component {
             <div className="page-wrapper">
                 <header className="page-header">
                     <h1>LumberLogs Dashboard</h1>
-                    <p>{this.state.url}</p>
+                    <p className="url">{this.state.url}</p>
                     <input
                         type="text"
                         className="filter"

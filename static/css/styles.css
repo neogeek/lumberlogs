@@ -100,3 +100,7 @@ code {
 .log-entry:nth-of-type(odd) {
     background-color: #ddd;
 }
+
+.url {
+    user-select: all;
+}
