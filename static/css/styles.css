@@ -99,6 +99,7 @@ code {
 .log-entry {
     margin: 0 0 0.5rem 0;
     padding: 0.4rem;
+    overflow: auto;
 }
 
 .log-entry:nth-of-type(odd) {
