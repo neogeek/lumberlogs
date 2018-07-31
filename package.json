@@ -33,7 +33,8 @@
   "build": {
     "appId": "com.scottdoxey.lumberlogs",
     "mac": {
-      "target": "dmg"
+      "target": "dmg",
+      "icon": "icon.png"
     }
   },
   "authors": [
