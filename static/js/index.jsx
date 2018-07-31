@@ -37,6 +37,12 @@ class Logs extends Component {
         fetch('/ip')
             .then(response => response.json())
             .then(url => this.setState({ url }));
+
+        document.addEventListener('keydown', e => {
+            if (e.metaKey && e.code === 'KeyK') {
+                this.clearCache();
+            }
+        });
     }
     filterLogs(e) {
         this.setState({
