@@ -32,6 +32,7 @@
   },
   "build": {
     "appId": "com.scottdoxey.lumberlogs",
+    "productName": "LumberLogs",
     "mac": {
       "target": "dmg",
       "icon": "icon.png"
