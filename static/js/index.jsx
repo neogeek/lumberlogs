@@ -27,9 +27,15 @@ class Logs extends Component {
 
         this.socket = new WebSocket(`ws://${document.location.host}`);
         this.socket.addEventListener('message', event => {
-            this.setState({
-                logs: [...this.state.logs, event.data]
-            });
+            this.setState(
+                {
+                    logs: [...this.state.logs, event.data]
+                },
+                () => {
+                    this.storeCache();
+                    this.scrollToBottom();
+                }
+            );
         });
         fetch('/ip')
             .then(response => response.json())
@@ -53,16 +59,15 @@ class Logs extends Component {
         );
     }
     clearCache() {
-        this.setState({ logs: [] });
+        this.setState({ logs: [] }, this.storeCache());
     }
-    scrollToBottom() {
+    scrollToBottom(behavior = 'smooth') {
         document
             .querySelector('.log-entry-footer')
-            .scrollIntoView({ behavior: 'smooth' });
+            .scrollIntoView({ behavior });
     }
-    componentDidUpdate() {
-        this.storeCache();
-        this.scrollToBottom();
+    componentDidMount() {
+        this.scrollToBottom('instant');
     }
     render() {
         return (
