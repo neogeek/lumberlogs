@@ -27,7 +27,13 @@ server.use(cors.actual);
 server.post('/log', (req, res) => {
     let body = req.body;
 
-    if (req.getContentType() === 'application/x-www-form-urlencoded') {
+    console.log(req.getContentType());
+
+    if (
+        ['application/json', 'application/x-www-form-urlencoded'].indexOf(
+            req.getContentType()
+        ) !== -1
+    ) {
         body = JSON.stringify(body);
     }
 
