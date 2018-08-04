@@ -4,7 +4,7 @@
 
 [![](https://img.shields.io/badge/Trello-Board-blue.svg)](https://trello.com/b/BIqhJuLP/lumberlog)
 
-![](screenshot.png)
+![](screenshot.jpg)
 
 ## Setup
 
