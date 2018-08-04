@@ -57,7 +57,6 @@ fetch('http://localhost:8000/log', {
 });
 ```
 
-
 ### Unity
 
 ```csharp
