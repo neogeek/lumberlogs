@@ -20,7 +20,7 @@ const createRestifyServer = (ipAddress, port) => {
         origins: ['*']
     });
 
-    server.use(cors.preflight);
+    server.pre(cors.preflight);
     server.use(cors.actual);
 
     server.post('/log', (req, res) => {
