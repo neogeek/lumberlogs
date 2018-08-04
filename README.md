@@ -31,7 +31,20 @@ $ PORT=5000 npm start
 ### Bash
 
 ```bash
-$ curl -H "content-type:text/plain" -d 'HelloWorld' http://localhost:8000/log
+$ curl -H "content-type:text/plain" -d 'Hello, world.' http://localhost:8000/log
+```
+
+```bash
+$ curl -H "content-type:application/json" -d '{"message":"Hello, world."}' http://localhost:8000/log
+```
+
+### JavaScript
+
+```javascript
+fetch('http://localhost:8000/log', {
+    method: 'POST',
+    body: 'Hello, world.'
+});
 ```
 
 ### Unity
