@@ -18,12 +18,12 @@
   "devDependencies": {
     "babel-plugin-transform-object-rest-spread": "6.26.0",
     "babel-preset-env": "1.7.0",
-    "electron": "2.0.5",
-    "electron-builder": "20.26.0",
-    "react": "16.4.1",
-    "react-dom": "16.4.1",
+    "electron": "2.0.6",
+    "electron-builder": "20.26.1",
+    "react": "16.4.2",
+    "react-dom": "16.4.2",
     "spire-of-babel": "1.4.0",
-    "uglify-js": "3.4.5"
+    "uglify-js": "3.4.6"
   },
   "scripts": {
     "start": "electron .",
