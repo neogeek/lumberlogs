@@ -2,56 +2,60 @@ const { app } = require('electron');
 
 const { createWriteStream } = require('graceful-fs');
 
-const wstream = createWriteStream(`${app.getPath('desktop')}/logs.txt`);
-
-const PORT = process.env.PORT || 8000;
+const WebSocketServer = require('ws').Server;
 
 const restify = require('restify');
 const corsMiddleware = require('restify-cors-middleware');
 
-const server = restify.createServer({});
+const createRestifyServer = (ipAddress, port) => {
+    const wstream = createWriteStream(`${app.getPath('desktop')}/logs.txt`);
 
-const WebSocketServer = require('ws').Server;
+    const server = restify.createServer({});
 
-const wss = new WebSocketServer({ server: server.server });
+    const wss = new WebSocketServer({ server: server.server });
 
-server.use(restify.plugins.bodyParser());
+    server.use(restify.plugins.bodyParser());
 
-const cors = corsMiddleware({
-    origins: ['*']
-});
+    const cors = corsMiddleware({
+        origins: ['*']
+    });
 
-server.use(cors.preflight);
-server.use(cors.actual);
+    server.use(cors.preflight);
+    server.use(cors.actual);
 
-server.post('/log', (req, res) => {
-    let body = req.body;
+    server.post('/log', (req, res) => {
+        let body = req.body;
 
-    if (
-        ['application/json', 'application/x-www-form-urlencoded'].indexOf(
-            req.getContentType()
-        ) !== -1
-    ) {
-        body = JSON.stringify(body);
-    }
+        if (
+            ['application/json', 'application/x-www-form-urlencoded'].indexOf(
+                req.getContentType()
+            ) !== -1
+        ) {
+            body = JSON.stringify(body);
+        }
 
-    const logString = `${new Date().toLocaleString()}\t${body}\n`;
-    process.stdout.write(logString);
-    wstream.write(logString);
-    wss.clients.forEach(client => client.send(logString));
-    res.send(204);
-});
+        const logString = `${new Date().toLocaleString()}\t${body}\n`;
+        process.stdout.write(logString);
+        wstream.write(logString);
+        wss.clients.forEach(client => client.send(logString));
+        res.send(204);
+    });
 
-const ip = require('ip');
+    server.get(
+        '/*',
+        restify.plugins.serveStatic({
+            directory: `${__dirname}/static`,
+            default: 'index.html'
+        })
+    );
 
-server.get('/ip', (req, res) => res.send(`http://${ip.address()}:${PORT}/log`));
+    server.get('/ip', (req, res) =>
+        res.send(`http://${ipAddress}:${port}/log`)
+    );
 
-server.get(
-    '/*',
-    restify.plugins.serveStatic({
-        directory: `${__dirname}/static`,
-        default: 'index.html'
-    })
-);
+    server.listen(port);
 
-server.listen(PORT);
+    return server;
+};
+
+module.exports = createRestifyServer;

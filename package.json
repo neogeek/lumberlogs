@@ -2,7 +2,7 @@
   "name": "lumber-logs",
   "version": "1.0.0",
   "description": "A self-hosted log aggregation tool.",
-  "main": "app.js",
+  "main": "port.js",
   "engines": {
     "node": ">=10.0"
   },
@@ -10,6 +10,7 @@
     "electron-context-menu": "0.10.0",
     "electron-default-menu": "1.0.1",
     "electron-store": "2.0.0",
+    "get-port": "4.0.0",
     "graceful-fs": "4.1.11",
     "ip": "1.1.5",
     "restify": "7.2.1",
