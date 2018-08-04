@@ -9,9 +9,7 @@ const PORT = process.env.PORT || 8000;
 const restify = require('restify');
 const corsMiddleware = require('restify-cors-middleware');
 
-const server = restify.createServer({
-    acceptable: ['text/plain', 'application/x-www-form-urlencoded']
-});
+const server = restify.createServer({});
 
 const WebSocketServer = require('ws').Server;
 
