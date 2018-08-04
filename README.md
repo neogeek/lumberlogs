@@ -47,6 +47,17 @@ fetch('http://localhost:8000/log', {
 });
 ```
 
+```javascript
+fetch('http://localhost:8000/log', {
+    method: 'POST',
+    body: JSON.stringify({'message': 'Hello, world.'}),
+    headers: {
+        'Content-Type': 'application/json'
+    },
+});
+```
+
+
 ### Unity
 
 ```csharp
