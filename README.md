@@ -2,7 +2,7 @@
 
 > A self-hosted log aggregation tool.
 
-[![](https://img.shields.io/badge/Trello-Board-blue.svg)](https://trello.com/b/BIqhJuLP/lumberlog)
+[![](https://img.shields.io/badge/Trello-Board-blue.svg)](https://trello.com/b/BIqhJuLP/lumberlogs)
 
 ![](screenshot.jpg)
 
