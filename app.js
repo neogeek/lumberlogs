@@ -42,7 +42,6 @@ const createElectronWindow = (ipAddress, port) => {
 
         const template = createAppMenuTemplate({
             saveDialog: () => {
-                win.webContents.send('request-logs');
                 ipcMain.once('receive-logs', (event, args) => {
                     dialog.showSaveDialog(
                         win,
@@ -63,6 +62,7 @@ const createElectronWindow = (ipAddress, port) => {
                                 : null
                     );
                 });
+                win.webContents.send('request-logs');
             }
         });
 
