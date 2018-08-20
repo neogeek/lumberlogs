@@ -73,21 +73,27 @@ class Logs extends Component {
         return (
             <div className="page-wrapper">
                 <header className="page-header">
-                    <h1>LumberLogs Dashboard</h1>
-                    <p className="url">{this.state.url}</p>
-                    <input
-                        type="text"
-                        className="filter"
-                        size={40}
-                        onChange={this.filterLogs.bind(this)}
-                        placeholder="Filter logs"
-                    />
-                    <button
-                        className="button"
-                        onClick={this.clearCache.bind(this)}
-                    >
-                        Clear Logs
-                    </button>
+                    <h1 class="page-header-title">LumberLogs</h1>
+                    <div className="page-header-url">
+                        <p>
+                            <span className="url">{this.state.url}</span>
+                        </p>
+                    </div>
+                    <div className="page-header-filter">
+                        <input
+                            type="search"
+                            className="input"
+                            size={40}
+                            onChange={this.filterLogs.bind(this)}
+                            placeholder="Filter logs"
+                        />
+                        <button
+                            className="button"
+                            onClick={this.clearCache.bind(this)}
+                        >
+                            Clear Logs
+                        </button>
+                    </div>
                 </header>
                 <div className="logs">
                     {this.state.logs
