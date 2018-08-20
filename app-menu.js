@@ -21,6 +21,7 @@ const createAppMenuTemplate = (callbacks = {}) => {
             submenu: [
                 {
                     label: 'Save Logs As…',
+                    accelerator: 'Command+S',
                     click: callbacks.saveDialog
                 }
             ]
