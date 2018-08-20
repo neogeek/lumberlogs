@@ -1,5 +1,7 @@
 const { writeFile } = require('graceful-fs');
 
+var { ipcMain } = require('electron');
+
 const createElectronWindow = (ipAddress, port) => {
     if (
         typeof process !== 'undefined' &&
@@ -39,25 +41,29 @@ const createElectronWindow = (ipAddress, port) => {
         });
 
         const template = createAppMenuTemplate({
-            saveDialog: () =>
-                dialog.showSaveDialog(
-                    win,
-                    {
-                        defaultPath: 'logs.txt',
-                        filters: [{ name: 'text', extensions: ['txt'] }]
-                    },
-                    filename =>
-                        filename
-                            ? writeFile(filename, 'test', 'utf8', err => {
-                                  if (err) {
-                                      dialog.showErrorBox(
-                                          'Error while saving file.',
-                                          err.message
-                                      );
-                                  }
-                              })
-                            : null
-                )
+            saveDialog: () => {
+                win.webContents.send('request-logs');
+                ipcMain.once('receive-logs', (event, args) => {
+                    dialog.showSaveDialog(
+                        win,
+                        {
+                            defaultPath: 'logs.txt',
+                            filters: [{ name: 'text', extensions: ['txt'] }]
+                        },
+                        filename =>
+                            filename
+                                ? writeFile(filename, args, 'utf8', err => {
+                                      if (err) {
+                                          dialog.showErrorBox(
+                                              'Error while saving file.',
+                                              err.message
+                                          );
+                                      }
+                                  })
+                                : null
+                    );
+                });
+            }
         });
 
         Menu.setApplicationMenu(Menu.buildFromTemplate(template));

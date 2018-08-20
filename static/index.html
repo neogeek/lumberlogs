@@ -12,5 +12,16 @@
 
 <script src="js/bundle.min.js"></script>
 
+<script>
+
+var { ipcRenderer } = require('electron');
+
+ipcRenderer.on('request-logs', () => {
+    const logs = JSON.parse(localStorage.getItem('logs')).join('').trim();
+    ipcRenderer.send('receive-logs', logs);
+});
+
+</script>
+
 </body>
 </html>
