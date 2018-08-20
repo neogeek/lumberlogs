@@ -8,9 +8,8 @@ const createElectronWindow = (ipAddress, port) => {
     }
 
     const { app, BrowserWindow, Menu, shell } = require('electron');
-    const defaultMenu = require('electron-default-menu');
 
-    require('electron-context-menu')();
+    const template = require('./app-menu');
 
     const Store = require('electron-store');
     const store = new Store();
@@ -23,8 +22,6 @@ const createElectronWindow = (ipAddress, port) => {
             height: store.get('window_height', 600),
             title: 'LumberLogs'
         });
-
-        const menu = defaultMenu(app, shell);
 
         win.loadURL(`http://${ipAddress}:${port}/`);
         win.focus();
@@ -39,7 +36,7 @@ const createElectronWindow = (ipAddress, port) => {
             win = null;
         });
 
-        Menu.setApplicationMenu(Menu.buildFromTemplate(menu));
+        Menu.setApplicationMenu(Menu.buildFromTemplate(template));
     };
 
     app.on('ready', createWindow);
