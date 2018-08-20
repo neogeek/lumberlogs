@@ -2,24 +2,54 @@
   "name": "lumber-logs",
   "version": "1.0.0",
   "description": "A self-hosted log aggregation tool.",
+  "main": "port.js",
   "engines": {
     "node": ">=10.0"
   },
   "dependencies": {
+    "electron-store": "2.0.0",
+    "get-port": "4.0.0",
+    "graceful-fs": "4.1.11",
+    "ip": "1.1.5",
     "restify": "7.2.1",
+    "restify-cors-middleware": "1.1.1",
     "ws": "6.0.0"
   },
   "devDependencies": {
     "babel-plugin-transform-object-rest-spread": "6.26.0",
     "babel-preset-env": "1.7.0",
-    "react": "16.4.1",
-    "react-dom": "16.4.1",
+    "electron": "2.0.7",
+    "electron-builder": "20.28.1",
+    "react": "16.4.2",
+    "react-dom": "16.4.2",
     "spire-of-babel": "1.4.0",
-    "uglify-js": "3.4.5"
+    "uglify-js": "3.4.7"
   },
   "scripts": {
-    "start": "node web.js",
-    "build": "NODE_ENV=production spire-of-babel ./static/js/index.jsx --bundle | uglifyjs --compress --mangle > ./static/js/bundle.min.js"
+    "start": "electron .",
+    "build": "npm run build:js && npm run build:app",
+    "build:js": "NODE_ENV=production spire-of-babel ./static/js/index.jsx --bundle | uglifyjs --compress --mangle > ./static/js/bundle.min.js",
+    "build:app": "electron-builder"
+  },
+  "build": {
+    "appId": "com.scottdoxey.lumberlogs",
+    "productName": "LumberLogs",
+    "mac": {
+      "target": "dmg",
+      "icon": "icon.png"
+    }
+  },
+  "authors": [
+    {
+      "name": "Scott Doxey",
+      "email": "hello@scottdoxey.com",
+      "homepage": "http://scottdoxey.com/"
+    }
+  ],
+  "homepage": "https://github.com/neogeek/lumber-logs",
+  "repository": {
+    "type": "git",
+    "url": "git://github.com/neogeek/lumber-logs.git"
   },
   "private": true
 }
