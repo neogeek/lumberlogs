@@ -29,8 +29,9 @@
   },
   "scripts": {
     "start": "electron .",
-    "dist": "electron-builder",
-    "build": "NODE_ENV=production spire-of-babel ./static/js/index.jsx --bundle | uglifyjs --compress --mangle > ./static/js/bundle.min.js"
+    "build": "npm run build:js && npm run build:app",
+    "build:js": "NODE_ENV=production spire-of-babel ./static/js/index.jsx --bundle | uglifyjs --compress --mangle > ./static/js/bundle.min.js",
+    "build:app": "electron-builder"
   },
   "build": {
     "appId": "com.scottdoxey.lumberlogs",
