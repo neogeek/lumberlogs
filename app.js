@@ -7,9 +7,9 @@ const createElectronWindow = (ipAddress, port) => {
         return false;
     }
 
-    const { app, BrowserWindow, Menu, shell } = require('electron');
+    const { app, BrowserWindow, Menu, dialog } = require('electron');
 
-    const template = require('./app-menu');
+    const createAppMenuTemplate = require('./app-menu');
 
     const Store = require('electron-store');
     const store = new Store();
@@ -34,6 +34,12 @@ const createElectronWindow = (ipAddress, port) => {
 
         win.on('closed', () => {
             win = null;
+        });
+
+        const template = createAppMenuTemplate({
+            saveDialog: () => {
+                dialog.showSaveDialog(win, {}, () => {});
+            }
         });
 
         Menu.setApplicationMenu(Menu.buildFromTemplate(template));
