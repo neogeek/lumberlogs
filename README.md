@@ -31,24 +31,24 @@ $ PORT=5000 npm start
 ### Bash
 
 ```bash
-$ curl -H "content-type:text/plain" -d 'Hello, world.' http://localhost:8000/log
+$ curl -H "content-type:text/plain" -d 'Hello, world.' http://localhost:1234/log
 ```
 
 ```bash
-$ curl -H "content-type:application/json" -d '{"message":"Hello, world."}' http://localhost:8000/log
+$ curl -H "content-type:application/json" -d '{"message":"Hello, world."}' http://localhost:1234/log
 ```
 
 ### JavaScript
 
 ```javascript
-fetch('http://localhost:8000/log', {
+fetch('http://localhost:1234/log', {
     method: 'POST',
     body: 'Hello, world.'
 });
 ```
 
 ```javascript
-fetch('http://localhost:8000/log', {
+fetch('http://localhost:1234/log', {
     method: 'POST',
     body: JSON.stringify({'message': 'Hello, world.'}),
     headers: {
