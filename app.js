@@ -1,4 +1,12 @@
 const createElectronWindow = (ipAddress, port) => {
+    if (
+        typeof process !== 'undefined' &&
+        typeof process.versions === 'object' &&
+        !process.versions.electron
+    ) {
+        return false;
+    }
+
     const { app, BrowserWindow, Menu, shell } = require('electron');
     const defaultMenu = require('electron-default-menu');
 
