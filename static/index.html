@@ -17,7 +17,7 @@
 var { ipcRenderer } = require('electron');
 
 ipcRenderer.on('request-logs', () => {
-    const logs = JSON.parse(localStorage.getItem('logs')).join('').trim();
+    const logs = JSON.parse(localStorage.getItem('logs') || '[]').join('').trim();
     ipcRenderer.send('receive-logs', logs);
 });
 
