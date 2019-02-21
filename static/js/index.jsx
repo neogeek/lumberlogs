@@ -58,8 +58,11 @@ class Logs extends Component {
             JSON.stringify(this.state.logs.slice(-MAX_LOGS_IN_CACHE))
         );
     }
+    removeCache() {
+        localStorage.removeItem('logs');
+    }
     clearCache() {
-        this.setState({ logs: [] }, this.storeCache());
+        this.setState({ logs: [] }, this.removeCache());
     }
     scrollToBottom(behavior = 'smooth') {
         document
