@@ -8,22 +8,22 @@
   },
   "dependencies": {
     "electron-store": "2.0.0",
-    "get-port": "4.0.0",
-    "graceful-fs": "4.1.11",
+    "get-port": "4.1.0",
+    "graceful-fs": "4.1.15",
     "ip": "1.1.5",
-    "restify": "7.2.1",
+    "restify": "8.0.0",
     "restify-cors-middleware": "1.1.1",
-    "ws": "6.0.0"
+    "ws": "6.1.4"
   },
   "devDependencies": {
     "babel-plugin-transform-object-rest-spread": "6.26.0",
     "babel-preset-env": "1.7.0",
-    "electron": "2.0.8",
-    "electron-builder": "20.28.2",
-    "react": "16.4.2",
-    "react-dom": "16.4.2",
+    "electron": "4.0.5",
+    "electron-builder": "20.38.5",
+    "react": "16.8.3",
+    "react-dom": "16.8.3",
     "spire-of-babel": "1.4.0",
-    "uglify-js": "3.4.8"
+    "uglify-js": "3.4.9"
   },
   "scripts": {
     "start": "electron .",
