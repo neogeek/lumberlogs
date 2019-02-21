@@ -50,10 +50,10 @@ fetch('http://localhost:1234/log', {
 ```javascript
 fetch('http://localhost:1234/log', {
     method: 'POST',
-    body: JSON.stringify({'message': 'Hello, world.'}),
+    body: JSON.stringify({ message: 'Hello, world.' }),
     headers: {
         'Content-Type': 'application/json'
-    },
+    }
 });
 ```
 
@@ -62,51 +62,75 @@ fetch('http://localhost:1234/log', {
 ```csharp
 using System.Collections;
 using UnityEngine;
+using UnityEngine.Networking;
+
+namespace CandyCoded.CommonComponents
+{
+
+    public class Logger : MonoBehaviour
+    {
+
+#pragma warning disable CS0649
+        [SerializeField]
+        private string url;
+#pragma warning restore CS0649
+
+        private int failedConnections;
+
+        private readonly int maxFailedConnections = 10;
 
 #if UNITY_EDITOR || DEVELOPMENT_BUILD
 
-public class Logger : MonoBehaviour
-{
-
-    [SerializeField]
-    private string url;
-
-    private int failedConnections;
-
-    private readonly int maxFailedConnections = 10;
-
-    private void HandleLog(string logString, string stackTrace, LogType type)
-    {
-
-        if (url != null && failedConnections < maxFailedConnections)
+        private void OnEnable()
         {
 
-            var loggingForm = new WWWForm();
-
-            loggingForm.AddField("Type", type.ToString());
-            loggingForm.AddField("Message", logString);
-            loggingForm.AddField("Stack_Trace", stackTrace);
-            loggingForm.AddField("Device_Model", SystemInfo.deviceModel);
-
-            StartCoroutine(SendDataToLumberLog(loggingForm));
+            Application.logMessageReceived += HandleLog;
 
         }
 
-    }
-
-    private IEnumerator SendDataToLumberLog(WWWForm form)
-    {
-        using (WWW www = new WWW(url, form))
+        private void OnDisable()
         {
 
-            yield return www;
+            Application.logMessageReceived -= HandleLog;
 
-            if (!string.IsNullOrEmpty(www.error))
+        }
+
+#endif
+
+        private void HandleLog(string logString, string stackTrace, LogType type)
+        {
+
+            if (url != null && failedConnections < maxFailedConnections)
             {
 
-                Debug.LogError(www.error);
+                var loggingForm = new WWWForm();
 
-                failedConnections += 1;
+                loggingForm.AddField("Type", type.ToString());
+                loggingForm.AddField("Message", logString);
+                loggingForm.AddField("Stack_Trace", stackTrace);
+                loggingForm.AddField("Device_Model", SystemInfo.deviceModel);
+
+                StartCoroutine(SendDataToLumberLog(loggingForm));
+
+            }
+
+        }
+
+        private IEnumerator SendDataToLumberLog(WWWForm form)
+        {
+            using (UnityWebRequest www = UnityWebRequest.Post(url, form))
+            {
+
+                yield return www.SendWebRequest();
+
+                if (www.isNetworkError || www.isHttpError)
+                {
+
+                    Debug.LogError(www.error);
+
+                    failedConnections += 1;
+
+                }
 
             }
 
@@ -114,21 +138,5 @@ public class Logger : MonoBehaviour
 
     }
 
-    private void OnEnable()
-    {
-
-        Application.logMessageReceived += HandleLog;
-
-    }
-
-    private void OnDisable()
-    {
-
-        Application.logMessageReceived -= HandleLog;
-
-    }
-
 }
-
-#endif
 ```
