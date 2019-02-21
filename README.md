@@ -77,7 +77,7 @@ namespace CandyCoded.CommonComponents
 
         private int failedConnections;
 
-        private readonly int maxFailedConnections = 10;
+        private const int maxFailedConnections = 10;
 
 #if UNITY_EDITOR || DEVELOPMENT_BUILD
 
