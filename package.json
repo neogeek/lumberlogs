@@ -4,26 +4,26 @@
   "description": "A self-hosted log aggregation tool.",
   "main": "port.js",
   "engines": {
-    "node": ">=10.0"
+    "node": ">=11.0"
   },
   "dependencies": {
-    "electron-store": "2.0.0",
-    "get-port": "4.1.0",
-    "graceful-fs": "4.1.15",
+    "electron-store": "4.0.0",
+    "get-port": "5.0.0",
+    "graceful-fs": "4.2.0",
     "ip": "1.1.5",
-    "restify": "8.0.0",
+    "restify": "8.3.3",
     "restify-cors-middleware": "1.1.1",
-    "ws": "6.1.4"
+    "ws": "7.1.1"
   },
   "devDependencies": {
     "babel-plugin-transform-object-rest-spread": "6.26.0",
     "babel-preset-env": "1.7.0",
-    "electron": "4.0.5",
-    "electron-builder": "20.38.5",
-    "react": "16.8.3",
-    "react-dom": "16.8.3",
+    "electron": "5.0.8",
+    "electron-builder": "21.1.5",
+    "react": "16.8.6",
+    "react-dom": "16.8.6",
     "spire-of-babel": "1.4.0",
-    "uglify-js": "3.4.9"
+    "uglify-js": "3.6.0"
   },
   "scripts": {
     "start": "electron .",
