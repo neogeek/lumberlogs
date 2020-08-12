@@ -1,35 +1,24 @@
 {
-  "name": "lumber-logs",
-  "version": "1.0.0",
-  "description": "A self-hosted log aggregation tool.",
-  "main": "port.js",
+  "name": "lumberlogs",
+  "version": "2.0.0",
+  "description": "A simple log aggregation tool.",
+  "main": "app.js",
   "engines": {
-    "node": ">=11.0"
+    "node": ">=12.0"
   },
   "dependencies": {
-    "electron-store": "4.0.0",
-    "get-port": "5.0.0",
-    "graceful-fs": "4.2.0",
     "ip": "1.1.5",
-    "restify": "8.3.3",
-    "restify-cors-middleware": "1.1.1",
-    "ws": "7.1.1"
+    "portfinder": "1.0.28",
+    "restify": "8.5.1",
+    "ws": "7.3.1"
   },
   "devDependencies": {
-    "babel-plugin-transform-object-rest-spread": "6.26.0",
-    "babel-preset-env": "1.7.0",
-    "electron": "5.0.8",
-    "electron-builder": "21.1.5",
-    "react": "16.8.6",
-    "react-dom": "16.8.6",
-    "spire-of-babel": "1.4.0",
-    "uglify-js": "3.6.0"
+    "electron": "9.2.0",
+    "electron-builder": "22.8.0"
   },
   "scripts": {
     "start": "electron .",
-    "build": "npm run build:js && npm run build:app",
-    "build:js": "NODE_ENV=production spire-of-babel ./static/js/index.jsx --bundle | uglifyjs --compress --mangle > ./static/js/bundle.min.js",
-    "build:app": "electron-builder"
+    "build": "electron-builder"
   },
   "build": {
     "appId": "com.scottdoxey.lumberlogs",
@@ -46,10 +35,10 @@
       "homepage": "http://scottdoxey.com/"
     }
   ],
-  "homepage": "https://github.com/neogeek/lumber-logs",
+  "homepage": "https://github.com/neogeek/lumberlogs",
   "repository": {
     "type": "git",
-    "url": "git://github.com/neogeek/lumber-logs.git"
+    "url": "git://github.com/neogeek/lumberlogs.git"
   },
   "private": true
 }

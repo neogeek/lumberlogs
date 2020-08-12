@@ -1,30 +1,14 @@
 # LumberLogs
 
-> A self-hosted log aggregation tool.
+> A simple log aggregation tool.
 
 [![](https://img.shields.io/badge/Trello-Board-blue.svg)](https://trello.com/b/BIqhJuLP/lumberlogs)
 
 ![](screenshot.jpg)
 
-## Setup
+## Install
 
-Install required packages via node.
-
-```bash
-$ npm install
-```
-
-Run the server.
-
-```bash
-$ npm start
-```
-
-Running the server with a custom port.
-
-```bash
-$ PORT=5000 npm start
-```
+Download the latest from <https://github.com/neogeek/lumberlogs/releases>
 
 ## Usage
 
@@ -59,79 +43,24 @@ fetch('http://localhost:1234/log', {
 
 ### Unity
 
-```csharp
-using System.Collections;
-using UnityEngine;
-using UnityEngine.Networking;
+Install package via UPM <https://gist.github.com/46e7896edaf8a59089b19fb07577555f.git>
 
-public class Logger : MonoBehaviour
-{
+## Build
 
-#pragma warning disable CS0649
-    [SerializeField]
-    private string url;
-#pragma warning restore CS0649
+Install required packages via node.
 
-    private int failedConnections;
+```bash
+$ npm install
+```
 
-    private const int maxFailedConnections = 10;
+Test the application.
 
-#if UNITY_EDITOR || DEVELOPMENT_BUILD
+```bash
+$ npm start
+```
 
-    private void OnEnable()
-    {
+Build the application.
 
-        Application.logMessageReceived += HandleLog;
-
-    }
-
-    private void OnDisable()
-    {
-
-        Application.logMessageReceived -= HandleLog;
-
-    }
-
-#endif
-
-    private void HandleLog(string logString, string stackTrace, LogType type)
-    {
-
-        if (url == null || failedConnections >= maxFailedConnections)
-        {
-            return;
-        }
-
-        var loggingForm = new WWWForm();
-
-        loggingForm.AddField("Type", type.ToString());
-        loggingForm.AddField("Message", logString);
-        loggingForm.AddField("Stack_Trace", stackTrace);
-        loggingForm.AddField("Device_Model", SystemInfo.deviceModel);
-
-        StartCoroutine(SendDataToLumberLog(loggingForm));
-
-    }
-
-    private IEnumerator SendDataToLumberLog(WWWForm form)
-    {
-        using (var www = UnityWebRequest.Post(url, form))
-        {
-
-            yield return www.SendWebRequest();
-
-            if (!www.isNetworkError && !www.isHttpError)
-            {
-                yield break;
-            }
-
-            Debug.LogError(www.error);
-
-            failedConnections += 1;
-
-        }
-
-    }
-
-}
+```bash
+$ npm run build
 ```

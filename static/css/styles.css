@@ -24,32 +24,6 @@ body {
     letter-spacing: 0.01em;
 }
 
-h1 {
-    font-weight: normal;
-    line-height: 1.3;
-}
-
-a {
-    color: inherit;
-}
-
-pre,
-code {
-    font-family: 'Monaco', monospace;
-    font-size: 0.8rem;
-    line-height: 1.3;
-    background-color: #eee;
-}
-
-pre {
-    padding: 1rem;
-}
-
-code {
-    display: inline-block;
-    padding: 0.25rem;
-}
-
 #root {
     height: 100%;
 }
@@ -73,6 +47,8 @@ code {
 
 .page-header-title {
     flex: 0;
+    font-weight: normal;
+    white-space: nowrap;
 }
 
 .page-header-url {
@@ -82,6 +58,11 @@ code {
 }
 
 .page-header-filter {
+    flex: 0;
+    white-space: nowrap;
+}
+
+.page-header-clear {
     flex: 0;
     white-space: nowrap;
 }
@@ -115,6 +96,11 @@ code {
     margin: 0 0 0.5rem 0;
     padding: 0.4rem;
     overflow: auto;
+    user-select: all;
+}
+
+.log-entry.hidden {
+    display: none;
 }
 
 .log-entry:nth-of-type(odd) {
