@@ -24,7 +24,11 @@
     "appId": "com.scottdoxey.lumberlogs",
     "productName": "LumberLogs",
     "mac": {
-      "target": "dmg",
+      "target": "pkg",
+      "icon": "icon.png"
+    },
+    "win": {
+      "target": "nsis",
       "icon": "icon.png"
     }
   },
