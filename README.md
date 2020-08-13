@@ -15,11 +15,11 @@ Download the latest from <https://github.com/neogeek/lumberlogs/releases>
 ### Bash
 
 ```bash
-$ curl -H "content-type:text/plain" -d 'Hello, world.' http://localhost:1234/log
+$ curl -H "content-type:text/plain" -d "Hello, world." http://localhost:1234/log
 ```
 
 ```bash
-$ curl -H "content-type:application/json" -d '{"message":"Hello, world."}' http://localhost:1234/log
+$ curl -H "content-type:application/json" -d "{\"message\":\"Hello, world.\"}" http://localhost:1234/log
 ```
 
 ### JavaScript
