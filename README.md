@@ -1,6 +1,6 @@
 # LumberLogs
 
-> A simple log aggregation tool.
+> 📝 A simple log aggregation tool.
 
 [![](https://img.shields.io/badge/Trello-Board-blue.svg)](https://trello.com/b/BIqhJuLP/lumberlogs)
 
