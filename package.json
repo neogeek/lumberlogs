@@ -23,6 +23,7 @@
   "build": {
     "appId": "com.scottdoxey.lumberlogs",
     "productName": "LumberLogs",
+    "artifactName": "LumberLogs-${version}.${ext}",
     "mac": {
       "target": "pkg",
       "icon": "icon.png"
