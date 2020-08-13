@@ -20,6 +20,7 @@ function createWindow() {
 
     win.webContents.on('new-window', (e, url) => {
         e.preventDefault();
+
         shell.openExternal(url);
     });
 }
