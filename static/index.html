@@ -12,7 +12,7 @@
                 <h1 class="page-header-title">LumberLogs <small>2.0</small></h1>
                 <div class="page-header-url">
                     <p>
-                        <span class="url">http://localhost:1234</span>
+                        <span class="url">http://localhost:1234/log</span>
                     </p>
                 </div>
                 <div class="page-header-filter">
@@ -30,7 +30,24 @@
                     </button>
                 </div>
             </header>
-            <main class="logs"></main>
+            <main class="logs">
+                <div class="zero-content">
+                    <h2 class="zero-content-title">
+                        Run the following command to get started:
+                    </h2>
+                    <pre><code>curl -H "content-type:text/plain" -d "Hello, world." <span class="url">http://localhost:1234/log</span></code></pre>
+                    <footer class="zero-content-footer">
+                        <p>
+                            More examples can be found at
+                            <a
+                                href="https://github.com/neogeek/lumberlogs"
+                                target="_blank"
+                                >https://github.com/neogeek/lumberlogs</a
+                            >
+                        </p>
+                    </footer>
+                </div>
+            </main>
         </div>
         <script src="js/client.js"></script>
     </body>

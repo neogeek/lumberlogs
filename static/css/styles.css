@@ -24,6 +24,24 @@ body {
     letter-spacing: 0.01em;
 }
 
+pre,
+code {
+    font-family: 'Monaco', monospace;
+    font-size: 0.8rem;
+    line-height: 1.3;
+    background-color: #eee;
+}
+
+pre {
+    padding: 1rem;
+    user-select: all;
+}
+
+code {
+    display: inline-block;
+    padding: 0.25rem;
+}
+
 #root {
     height: 100%;
 }
@@ -99,14 +117,31 @@ body {
     user-select: all;
 }
 
-.log-entry.hidden {
-    display: none;
-}
-
 .log-entry:nth-of-type(odd) {
     background-color: #ddd;
 }
 
+.zero-content {
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}
+
+.zero-content-title {
+    font-weight: normal;
+    margin-bottom: 1rem;
+}
+
+.zero-content-footer {
+    margin-top: 1rem;
+}
+
 .url {
     user-select: all;
+}
+
+.hidden {
+    display: none;
 }

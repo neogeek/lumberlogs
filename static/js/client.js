@@ -1,11 +1,14 @@
 const socket = new WebSocket(`ws://${document.location.host}`);
 
-const url = document.querySelector('.url');
+const urls = document.querySelectorAll('.url');
 const logs = document.querySelector('.logs');
+const zeroContent = logs.querySelector('.zero-content');
 const filterInput = document.querySelector('#filter');
 const clearButton = document.querySelector('#clear');
 
-url.innerHTML = `http://${document.location.host}/log`;
+urls.forEach(url => {
+    url.innerHTML = `http://${document.location.host}/log`;
+});
 
 const filterLogs = keywords => {
     const pattern = new RegExp(keywords, 'i');
@@ -15,6 +18,7 @@ const filterLogs = keywords => {
 };
 
 socket.addEventListener('message', ({ data }) => {
+    zeroContent.classList.toggle('hidden', true);
     logs.innerHTML += `<div class="log-entry">${data}</div>`;
     filterLogs(filterInput.value);
     logs.querySelector('div:last-of-type').scrollIntoView({ behavior: 'auto' });
