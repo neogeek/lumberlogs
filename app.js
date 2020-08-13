@@ -1,4 +1,4 @@
-const { app, BrowserWindow } = require('electron');
+const { app, BrowserWindow, shell } = require('electron');
 
 const ip = require('ip');
 
@@ -16,6 +16,11 @@ function createWindow() {
         server.listen(port, ip.address());
 
         win.loadURL(`http://${ip.address()}:${port}/`);
+    });
+
+    win.webContents.on('new-window', (e, url) => {
+        e.preventDefault();
+        shell.openExternal(url);
     });
 }
 
