@@ -110,15 +110,20 @@ code {
     overflow: auto;
 }
 
-.log-entry {
+.log-list-item {
     margin: 0 0 0.5rem 0;
     padding: 0.4rem;
+    list-style: none;
     overflow: auto;
     user-select: all;
 }
 
-.log-entry:nth-of-type(odd) {
+.log-list-item:nth-of-type(odd) {
     background-color: #ddd;
+}
+
+.log-list:not(:empty) + .zero-content {
+    display: none;
 }
 
 .zero-content {
