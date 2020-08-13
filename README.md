@@ -4,7 +4,7 @@
 
 [![](https://img.shields.io/badge/Trello-Board-blue.svg)](https://trello.com/b/BIqhJuLP/lumberlogs)
 
-![](screenshot.jpg)
+<img src="screenshot.png" width="800">
 
 ## Install
 
